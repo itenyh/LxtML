@@ -4,7 +4,7 @@ from __future__ import division
 import random
 
 
-__author__ = 'yanghan'
+__author__ = 'HanHan'
 
 
 X = []
