@@ -1,6 +1,7 @@
 #coding:utf-8
 
 from __future__ import division
+import numpy as np
 import random
 
 __author__ = 'itensb'
@@ -28,6 +29,25 @@ def create_data(size = 1000):
 
     # print(noisy_data)
     return noisy_data
+
+data = create_data()
+X = [[item[0], item[1], 1] for item in data]
+Y = [item[2]for item in data]
+
+# X = [[0.5, 0.1, 1], [0.1, 0.2 , 1]]
+# Y = [[1, -1]]
+
+X_mat = np.mat(X)
+Y_mat = np.mat(Y)
+
+H = X_mat * (X_mat.T * X_mat).I * X_mat.T
+Y_p = H * Y_mat.T
+sum_error = ((Y_mat - Y_p.T) * (Y_mat - Y_p.T).T) / 1000
+
+
+
+
+
 
 
 
