@@ -45,10 +45,9 @@ def linear_model(data):
     Y_p = H * Y_mat.T
     sum_error = ((Y_mat - Y_p.T) * (Y_mat - Y_p.T).T) / 1000
 
+    return sum_error
 
-# linear_model(create_data())
-
-
+'''
 data = create_data()
 # data = [[0.5, 0.1, 1], [0.1, 0.2 , -1]]
 X = [[item[0], item[1], 1] for item in data]
@@ -81,6 +80,8 @@ W = np.mat(w_p).T
 Y_p = X_mat * W
 sum_error = ((Y_mat - Y_p.T) * (Y_mat - Y_p.T).T) / 1000
 print(sum_error)
+'''
+
 
 
 
