@@ -4,28 +4,10 @@ from __future__ import division
 import numpy as np
 import time
 from math import exp, log
+from Other.tool import create_muldata_fromfile, error_01
 
 train_file = 'hw3_train.txt'
 test_file = 'hw3_test.txt'
-
-def create_muldata_fromfile(filename):
-
-    f = open(filename)
-    data = []
-    for line in f:
-
-        str_datas = line.split()
-        float_datas = [float(i) for i in str_datas]
-
-        data.append(float_datas)
-
-    X = [d[:-1] + [1] for d in data]
-    Y = [[d[-1]] for d in data]
-
-    X = np.array(X)
-    Y = np.array(Y)
-
-    return X, Y
 
 def theta(s):
 
@@ -92,19 +74,6 @@ def predict(W, X, is_zero_one = True):
         result = zo_result
 
     return result
-
-def error_01(Yp, Y):
-
-    error = 0
-    for i in range(len(Y)):
-
-        if Y[i] != Yp[i]:
-
-            error += 1
-
-    error_rate = error / len(Y)
-
-    return error_rate
 
 X, Y = create_muldata_fromfile(train_file)
 

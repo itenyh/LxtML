@@ -5,28 +5,13 @@ import numpy as np
 import random
 from math import exp, log
 import time
+from Other.tool import create_muldata_fromfile
 
 # X = [[0.5, 0.1, 1], [0.1, 0.2 , 1]]
 # Y = [[1], [-1]]
 
 train_file = 'hw3_train.txt'
 test_file = 'hw3_test.txt'
-
-def create_muldata_fromfile(filename):
-
-    f = open(filename)
-    data = []
-    for line in f:
-
-        str_datas = line.split()
-        float_datas = [float(i) for i in str_datas]
-
-        data.append(float_datas)
-
-    X = [d[:-1] + [1] for d in data]
-    Y = [[d[-1]] for d in data]
-
-    return X, Y
 
 def theta_f(s):
 
@@ -54,14 +39,14 @@ def train_logistic_model(X, Y, l_n = 0.01, is_sgd = False):
 
         if is_sgd:
 
-            if(t % 100 == 0): print 'Train time now : %d,  W_mat: %s, i_sgd： %d' % (t, W_mat[0, 0], i_sgd)
+            # if(t % 100 == 0): print 'Train time now : %d,  W_mat: %s, i_sgd： %d' % (t, W_mat[0, 0], i_sgd)
 
             degree = theta_f(- Y_mat[i_sgd] * W_mat.T * X_mat[i_sgd].T) * (-Y[i_sgd][0] * X_mat[i_sgd].T)
             i_sgd = i_sgd + 1 if i_sgd < N - 1 else 0
 
         else:
 
-            if(t % 100 == 0): print 'Train time now : %d,  W_mat: %s' % (t, W_mat[0, 0])
+            # if(t % 100 == 0): print 'Train time now : %d,  W_mat: %s' % (t, W_mat[0, 0])
 
             for i in range(0, N):
 
@@ -75,7 +60,7 @@ def train_logistic_model(X, Y, l_n = 0.01, is_sgd = False):
 
         t = t + 1
 
-    print 'Training Cost : %f seconds' % (time.time() - now)
+    # print 'Training Cost : %f seconds' % (time.time() - now)
 
     return W_mat
 
@@ -120,8 +105,8 @@ X, Y = create_muldata_fromfile(test_file)
 
 ra =  predict(W, X)
 
-print(Y)
-print(ra)
+# print(Y)
+# print(ra)
 
 error = 0
 for i in range(len(Y)):
